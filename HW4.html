@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="HW4.css">
+	<title></title>
+</head>
+<body onkeydown="enter()">
+	<div>
+		<h1>Guessing Game </h1>
+		<form action="#">
+			<p>Your Guess(1-100)</p>
+			<input type="text" id="number" class="d">
+			<p><input type="button" id="play" onclick="check()">
+			</p>
+		</form>
+		<div id="result" class="e">
+			<div class="a">Result</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	var rand = Math.floor((Math.random()*100)+1);
+	var button;
+	var guess;
+	var result;
+	var min = 1;
+	var max = 100;
+	var table;
+	button = document.getElementById("button");
+	button.addEventListener("click",start);
+	button.addEventListener("click",addElement);
+	function start(){
+		guess = document.getElementById("guess").value;
+		guess = parseInt(guess);
+		if(guess!=rand){
+			if(guess>rand){
+				max = guess;
+			}else if(guess<rand){
+				min = guess;
+			}
+			result = min+"-"+max
+		}else{
+			alert("Bingo");
+			return;
+		}
+		table = document.getElementById("result")
+		let row = table.insertRow();
+		row.insertCell(0).innerHTML = min + "-" + max;
+	}
+</script>
+</body>
+</html>
